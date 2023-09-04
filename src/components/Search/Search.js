@@ -1,22 +1,28 @@
 import {React,useState} from 'react'
 import './Search.css'
 import Weather from '../Weather/Weather';
-const Search = () => {
+import { useNavigate } from 'react-router-dom';
+const Search = ({ setCity }) => {
+    const navigate = useNavigate();
     const [toggle, setToggle] = useState(false);
-    const [city, setCity] = useState("");
+    //const [city, setCity] = useState("");
+    const [cityInput, setCityInput] = useState('');
     const handleClick = () => {
         setToggle(true);
+        setCity(cityInput); // Set the city in the parent component
+        navigate('/weather');
       };
     
       const handleChange = (event) => {
-        setCity(event.target.value);
+        setCityInput(event.target.value);
       };
-      console.log(city);
+      //console.log(city);
       console.log(toggle);
   return (
     <>
      {toggle ? (
-        <Weather city={city} />
+        // <Weather city={city} />
+        <p></p>
       ) : (
         <div>
         <h1 className="my-5 text-decoration-underline" style={{ textShadow: '1.5px 2px 4px white', textUnderlineOffset: '15px', textAlign: 'center' }}>Weather App</h1>

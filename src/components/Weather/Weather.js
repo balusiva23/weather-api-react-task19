@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Weather.css";
 import { Link } from 'react-router-dom';
+
 const Weather = ({ city }) => {
     const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=5fcb0017515c5ce56a59facaf1f66cf2`;
 
@@ -20,10 +21,7 @@ const Weather = ({ city }) => {
         .catch((err) => setError(err.message));
     }, []);
   
-    
-  const handleResetState = () => {
-    setData(null);
-  };
+
 
   return (
     <>

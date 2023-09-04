@@ -1,14 +1,17 @@
-import React from 'react'
+import {React,useState} from 'react'
 import Search from './components/Search/Search'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route,Routes } from 'react-router-dom';
+import Weather from './components/Weather/Weather';
 const App = () => {
+  const [city, setCity] = useState('');
   return (
   //  <Search/>
     <Router>
-
-      <Route path="/" exact component={Search} />
-
-   
+  
+      <Routes>
+        <Route path="/" element={<Search setCity={setCity} />} />
+        <Route path="/weather" element={<Weather city={city} />} />
+      </Routes>
   </Router>
   )
 }
